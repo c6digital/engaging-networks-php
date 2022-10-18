@@ -50,6 +50,6 @@ class EngagingNetworks
             ->withHeaders([
                 'ens-auth-token' => $this->token,
             ])
-            ->post(rtrim($this->baseUrl, '/') . '/' . $endpoint, $data);
+            ->post($this->baseUrl . $endpoint, $data);
     }
 }
