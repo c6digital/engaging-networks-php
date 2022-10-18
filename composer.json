@@ -1,0 +1,11 @@
+{
+    "name": "c6digital/engaging-networks-php",
+    "autoload": {
+        "psr-4": {
+            "C6Digital\\EngagingNetworks\\": "src"
+        }
+    },
+    "require": {
+        "illuminate/http": "^9.35"
+    }
+}
