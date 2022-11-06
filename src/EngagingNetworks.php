@@ -28,6 +28,11 @@ class EngagingNetworks
         return $this->post("/page/{$pageId}/process", $data);
     }
 
+    public function getSupporterById(int $supporterId, array $parameters = []): Response
+    {
+        return $this->post("/supporter/{$supporterId}", $parameters);
+    }
+
     public function authenticate(): void
     {
         $response = Http::withBody($this->key, 'application/json')
