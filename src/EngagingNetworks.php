@@ -30,7 +30,7 @@ class EngagingNetworks
 
     public function getSupporterById(int $supporterId, array $parameters = []): Response
     {
-        return $this->post("/supporter/{$supporterId}", $parameters);
+        return $this->get("/supporter/{$supporterId}", $parameters);
     }
 
     public function authenticate(): void
@@ -44,6 +44,18 @@ class EngagingNetworks
         }
 
         $this->token = $response['ens-auth-token'];
+    }
+
+    protected function get(string $endpoint, array $data = []): Response
+    {
+        $this->authenticate();
+
+        return Http::asJson()
+            ->acceptJson()
+            ->withHeaders([
+                'ens-auth-token' => $this->token,
+            ])
+            ->get($this->baseUrl . $endpoint, $data);
     }
 
     protected function post(string $endpoint, array $data = []): Response
