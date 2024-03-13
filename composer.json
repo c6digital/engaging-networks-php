@@ -6,6 +6,6 @@
         }
     },
     "require": {
-        "illuminate/http": "^10.0"
+        "illuminate/http": "^10.0 || ^11.0"
     }
 }
