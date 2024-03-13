@@ -49,6 +49,11 @@ class EngagingNetworks
     public function authenticate(): void
     {
         $response = Http::withBody($this->key, 'application/json')
+            ->when($this->proxy, function (PendingRequest $request) {
+                return $request->withOptions([
+                    'proxy' => $this->proxy,
+                ]);
+            })
             ->post('https://ca.engagingnetworks.app/ens/service/authenticate')
             ->json();
 
